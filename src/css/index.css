@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: Lato;
+  src: url('../font/Lato-Light.ttf');
+}
+
+body {
+  font-family: Lato;
+  background-color: #2c3e50;
+}
+
+.round-border {
+  border-radius: 1.5%;
+}
+
+.round-border-top,
+.game img {
+  border-top-left-radius: 1.5%;
+  border-top-right-radius: 1.5%;
+}
+
+.game {
+  margin: 5vh 10vw 5vh 10vw;
+  padding: 3vh 3vw 3vh 3vw;
+  background-color: #3498db;
+  color: #ecf0f1;
+}
+.game-border {
+  padding: 2vh 2vw 2vh 2vw;
+}
+
+.header {
+  position: relative;
+  text-align: center;
+  background-color: #8e44ad;
+}
+
+.header img {
+  width: 100%;
+}
+
+.bottom-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 3% 0;
+  background-image: linear-gradient(to bottom, transparent, black);
+}
+
+.bottom-border {
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.details {
+  padding: 2vh 1.5vw 5vh 1.5vw;
+  text-align: center;
+  background-color: #8e44ad;
+}
+
+.options {
+  margin-top: 1vh;
+  padding: 1vh 1vw 1vh;
+  background-color: #2980b9;
+  text-align: left;
+}
+
+.btn-reset {
+  margin-top: 5vh;
+  margin-left: 50%;
+}
