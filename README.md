@@ -1,9 +1,10 @@
-Frontend for the cave of adventures.
-Set the server ip to the python back-end IP
+The Cave of Adventures - Front End
 
-
-Commands:
+This is the front-end of the Cave of Adventures web project. First you need to update the IP in config.js to the address of your back-end (see back-end). Then, copy this repo to a server with npm and run the command below to start it up.
 
 ### `npm start`
 
 
+Back-end
+The cave of Adventures requires the following api to function, make sure this is working first:
+https://github.com/tylerfoger/cave-back
