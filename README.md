@@ -6,5 +6,7 @@ This is the front-end of the Cave of Adventures web project. First you need to u
 
 
 Back-end
+
 The cave of Adventures requires the following api to function, make sure this is working first:
+
 https://github.com/tylerfoger/cave-back
