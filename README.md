@@ -1,6 +1,6 @@
 The Cave of Adventures - Front End
 
-This is the front-end of the Cave of Adventures web project. First you need to update the address in config.js to the address of your back-end (see back-end). Then, copy this repo to a server with npm and run the command below to start it up.
+This is the front-end for the Cave of Adventures web project. First you need to update the address in config.js to the address of your back-end (see back-end). Then, run the command below:
 
 ### `npm start`
 
