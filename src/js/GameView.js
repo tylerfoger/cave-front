@@ -4,6 +4,7 @@ import entrance from '../img/start.png';
 import improom from '../img/improom.png';
 import hubroom from '../img/hubRoom.png';
 import jarroom from '../img/jarroom.png';
+import bossroom from '../img/bossroom.png';
 import { POST, packagePostData, updateRoom } from '../js/helpers.js';
 import { url } from '../js/config.js';
 
@@ -17,6 +18,8 @@ function getImg(room_name) {
     exportImg = jarroom;
   } else if (room_name === 'improom') {
     exportImg = improom;
+  } else if (room_name === 'bossroom') {
+    exportImg = bossroom;
   }
   return exportImg;
 }
@@ -25,7 +28,7 @@ function Header(props) {
   const img = getImg(props.room_name);
 
   return (
-    <div className="header round-border-top">
+    <div className="header round-border-top center-text">
       <img alt={props.room_name} src={img}></img>
       <p className="bottom-fade">{props.room_name.toUpperCase()}</p>
     </div>
@@ -34,7 +37,7 @@ function Header(props) {
 
 function Details(props) {
   return (
-    <div className="details bottom-border">
+    <div className="details bottom-border center-text">
       <p>{props.room_details}</p>
     </div>
   );
@@ -50,9 +53,29 @@ function Options(props) {
   );
 }
 
+function Reset(props) {
+  return (
+    <button
+      className="btn-reset center-text"
+      onClick={(e) => {
+        e.preventDefault();
+
+        const defaultOptions = packagePostData('default');
+
+        POST(url, defaultOptions, props).then((res) =>
+          updateRoom(res.data, props)
+        );
+      }}
+    >
+      Reset
+    </button>
+  );
+}
+
 function Choice(props) {
   return (
     <form
+      className="choice center-text"
       onSubmit={(e) => {
         e.preventDefault();
 
@@ -77,28 +100,15 @@ function Choice(props) {
         e.target[0].value = '';
       }}
     >
-      <label>Choice: </label>
+      <label>Type your choice from the options above: </label>
       <input type="text" name="choice" />
       <button>Submit</button>
-      <button
-        className="btn-reset"
-        onClick={(e) => {
-          e.preventDefault();
-
-          const defaultOptions = packagePostData('default');
-
-          POST(url, defaultOptions, props).then((res) =>
-            updateRoom(res.data, props)
-          );
-        }}
-      >
-        Reset
-      </button>
     </form>
   );
 }
 
 export default function GameView(props) {
+  // any way to move these outside the function so the children can reference them also?
   const [room_details, setRoomDetails] = useState(
     props.gameOptions.room_details
   );
@@ -118,21 +128,32 @@ export default function GameView(props) {
       <Details room_details={room_details} />
       <Options room_options={room_options} />
       <Choice
+        // How can we change this to a function?
         setRoomDetails={setRoomDetails}
         setRoomName={setRoomName}
-        room_name={room_name}
         setRoomOptions={setRoomOptions}
-        looked={looked}
         setLooked={setLooked}
+        setTrap={setTrap}
+        setHp={setHp}
+        setStick={setStick}
+        setApproach={setApproach}
+        room_name={room_name}
+        looked={looked}
         room_details={room_details}
         room_options={room_options}
         trap={trap}
-        setTrap={setTrap}
         hp={hp}
-        setHp={setHp}
         stick={stick}
-        setStick={setStick}
         approach={approach}
+      />
+      <Reset
+        setRoomDetails={setRoomDetails}
+        setRoomName={setRoomName}
+        setRoomOptions={setRoomOptions}
+        setLooked={setLooked}
+        setTrap={setTrap}
+        setHp={setHp}
+        setStick={setStick}
         setApproach={setApproach}
       />
     </div>
