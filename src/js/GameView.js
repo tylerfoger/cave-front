@@ -88,7 +88,7 @@ function Choice(props) {
         e.preventDefault();
 
         // Get users choice
-        const choice = e.target[0].value;
+        const choice = e.target[0].value.toLowerCase();
 
         if (!choice) return;
         // // Package choice and props together
