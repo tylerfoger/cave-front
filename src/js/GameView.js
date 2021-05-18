@@ -8,29 +8,37 @@ import bossroom from '../img/bossroom.png';
 import { POST, packagePostData, updateRoom } from '../js/helpers.js';
 import { url } from '../js/config.js';
 
-function getImg(room_name) {
-  let exportImg;
+function reformatHeader(room_name) {
+  let exportImg, roomName;
   if (room_name === 'entrance') {
     exportImg = entrance;
+    roomName = 'The Front Door';
   } else if (room_name === 'hubroom') {
     exportImg = hubroom;
+    roomName = '*SPOILERS* Trap Room';
   } else if (room_name === 'jarroom') {
     exportImg = jarroom;
+    roomName = 'The Skeleton Jar room';
   } else if (room_name === 'improom') {
     exportImg = improom;
+    roomName = 'The Imp Room';
   } else if (room_name === 'bossroom') {
     exportImg = bossroom;
+    roomName = 'The Boss Room';
   }
-  return exportImg;
+  const retObj = {
+    img: exportImg,
+    room: roomName,
+  };
+  return retObj;
 }
 
 function Header(props) {
-  const img = getImg(props.room_name);
-
+  const { img, room } = reformatHeader(props.room_name);
   return (
     <div className="header round-border-top center-text">
       <img alt={props.room_name} src={img}></img>
-      <p className="bottom-fade">{props.room_name.toUpperCase()}</p>
+      <p className="bottom-fade">{room}</p>
     </div>
   );
 }
