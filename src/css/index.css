@@ -41,6 +41,14 @@ button {
   color: #ecf0f1;
   max-width: 60%;
 }
+
+@media only screen and (max-width: 800px) {
+  .game {
+    margin: 2%;
+    max-width: 100%;
+  }
+}
+
 .game-border {
   padding: 1vh 1vw 1vh 1vw;
 }

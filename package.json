@@ -1,6 +1,6 @@
 {
   "name": "cave-front",
-  "homepage": "http://ec2-34-214-41-107.us-west-2.compute.amazonaws.com"
+  "homepage": "http://ec2-34-214-41-107.us-west-2.compute.amazonaws.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
