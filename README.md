@@ -2,7 +2,16 @@
 
 This is the front-end for the Cave of Adventures web project. First, update the value url in /src/js/config.js to the address of your back-end (see back-end). Then, run the command below:
 
+# TEST:
+To test the app locally run:
 ### `npm start`
+
+# Prod:
+To run the app on a server, run:
+
+### `npm run build`
+
+Place the contents of the build folder that gets created into /var/www/html/
 
 # Back-end
 
