@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 // import { useAsync } from 'react-async';
 import entrance from '../img/start.png';
 import improom from '../img/improom.png';
@@ -6,7 +6,7 @@ import hubroom from '../img/hubRoom.png';
 import jarroom from '../img/jarroom.png';
 import bossroom from '../img/bossroom.png';
 import { POST, packagePostData, updateRoom } from '../js/helpers.js';
-import { url } from '../js/config.js';
+import { url, setupGame } from '../js/config.js';
 
 function reformatHeader(room_name) {
   let exportImg, roomName;
@@ -115,20 +115,28 @@ function Choice(props) {
   );
 }
 
-export default function GameView(props) {
+export default function GameView() {
   // any way to move these outside the function so the children can reference them also?
-  const [room_details, setRoomDetails] = useState(
-    props.gameOptions.room_details
-  );
-  const [room_name, setRoomName] = useState(props.gameOptions.room_name);
-  const [room_options, setRoomOptions] = useState(
-    props.gameOptions.room_options
-  );
+  const [room_details, setRoomDetails] = useState([]);
+  const [room_name, setRoomName] = useState({});
+  const [room_options, setRoomOptions] = useState([]);
   const [looked, setLooked] = useState(false);
   const [trap, setTrap] = useState(true);
   const [hp, setHp] = useState(20);
   const [stick, setStick] = useState(false);
   const [approach, setApproach] = useState(4);
+
+  useEffect(() => {
+    async function fetchData() {
+      const fetchedData = await POST(url, setupGame);
+      const retData = fetchedData.data;
+
+      setRoomDetails(retData.room_details);
+      setRoomName(retData.room_name);
+      setRoomOptions(retData.room_options);
+    }
+    fetchData();
+  }, []);
 
   return (
     <div className="game-border">
